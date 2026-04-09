@@ -1,0 +1,17 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch</title>
+</head>
+<body>
+    <script>
+        async function onPressed(){
+            const response = await fetch("https://fakerapi.it/api/v1/persons");
+            const data = await response.json();
+            console.log(data);
+        }
+    </script>
+    <button onclick="onPressed()">Get The Data!!</button>
+</body>
+</html>
