@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="principal_" type="text" placeholder="Principal">
+    <input id="rate_" type="text" placeholder="Rate">
+    <input id="time_" type="text" placeholder="Time">
+    <button onclick="calculate()">Submit</button>
+    <p id="demo"></p>
+    <script>
+        async function calculate(){
+            const principal = document.getElementById('principal_').value
+            const rate = document.getElementById('rate_').value
+            const time = document.getElementById('time_').value
+            const response = await fetch("http://localhost:3000/simpleInterest?principal="+principal+"&rate="+rate+"&time="+time);
+            const ans = await response.json();
+            document.getElementById('demo').innerHTML = `Total: ${ans.total}<br> Interest: ${ans.interest}`
+
+        }
+    </script>
+</body>
+</html>
