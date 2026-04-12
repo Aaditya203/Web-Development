@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="first">Div One</div>
+        <div><p>Paragraph one</p></div>
+    <div id='first'>Div two</div>
+    <p>Paragraph two</p>
+    <div id="first">yet another div</div>
+    <div id="myDiv">
+        <h2 class="intro">Hi there!!</h2>
+        <p class = "intro">Hello There!!</p>
+        <p class="intro">Mai hu Gian!!</p>
+    </div>
+    <script>
+        // var paragraphs = document.querySelectorAll('p');
+        // paragraphs.forEach(paragraph => paragraph.style.backgroundColor = "red")
+
+        // var divs = document.querySelectorAll('#first');
+        // divs.forEach(divi => divi.style.backgroundColor = 'cyan');
+
+        // var temp = document.querySelectorAll('.intro');
+        // temp.forEach(temps => temps.style.backgroundColor = 'green')
+
+        var nodes = document.querySelectorAll("div > p");
+        nodes.forEach(node => node.style.backgroundColor = 'orange');
+    </script>
+</body>
+</html>
