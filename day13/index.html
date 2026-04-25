@@ -1,0 +1,18 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+<script>
+    function onPressButton(){
+        const currentElement = document.getElementById("counter").innerHTML;
+        const value = currentElement.split(" ")[1];
+        const finalValue = parseInt(value) + 1;
+        document.getElementById("counter").innerHTML = `Counter ${finalValue}`
+    }
+</script>
+<body>
+    <button onclick="onPressButton()" id="counter">Counter 0</button>
+</body>
+</html>
