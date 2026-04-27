@@ -5,17 +5,26 @@ import heroImg from './assets/hero.png'
 import './App.css'
 
 function App() {
-  const [title, setTitle] = useState("My name is Aditya!")
-  function change(){
-    setTitle("My name is "+ Math.random());
-  }
   return (
-    <>
-    <button onClick={change}>Click me</button>
-    <Header title={title}/>
+    <div>
+    <HeaderButton/>
     <Header title="Hi there"/>
-    </>
+    <Header title="Hi there"/>
+    <Header title="Hi there"/>
+    <Header title="Hi there"/>
+    </div>
   )
+}
+
+function HeaderButton(){
+  const [title,setTitle] = useState("My name is Aditya");
+  function change(){
+    setTitle("My name is "+Math.random())
+  }
+  return <div>
+    <button onClick={change}>Click me!</button>
+    <Header title={ title }/>
+  </div>
 }
 
 function Header(props){
