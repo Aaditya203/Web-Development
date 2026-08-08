@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import FetchOld from './pages/FetchOld';
 import FetchRq from './pages/FetchRq';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import FetchIndv from './pages/FetchIndv';
 
 // 1. Create a Layout component that contains NavBar, Footer, and Outlet
 function RootLayout() {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "rq",
         element: <FetchRq />
+      },
+      {
+        path:"rq/:id",
+        element:<FetchIndv/>
       }
     ]
   }

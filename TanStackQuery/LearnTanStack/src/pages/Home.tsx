@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Home() {
   return (
     <div className="page-container" id="page-home">
@@ -7,18 +9,22 @@ export default function Home() {
       </header>
       <main className="page-content">
         <div className="card-grid">
-          <div className="card">
-            <span className="card-badge">Traditional</span>
-            <h2>FetchOld</h2>
-            <p>Inspect standard useEffect fetching mechanisms and their trade-offs.</p>
-          </div>
-          <div className="card accent-card">
-            <span className="card-badge dynamic-badge">Query</span>
-            <h2>FetchRq</h2>
-            <p>Experience auto-caching, sync-on-focus, and state query performance.</p>
-          </div>
+          <Link to="/old" className="card-link" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <div className="card">
+              <span className="card-badge">Traditional</span>
+              <h2>FetchOld</h2>
+              <p>Inspect standard useEffect fetching mechanisms and their trade-offs.</p>
+            </div>
+          </Link>
+          <Link to="/rq" className="card-link" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <div className="card accent-card">
+              <span className="card-badge dynamic-badge">Query</span>
+              <h2>FetchRq</h2>
+              <p>Experience auto-caching, sync-on-focus, and state query performance.</p>
+            </div>
+          </Link>
         </div>
       </main>
     </div>
   );
-}
+}
