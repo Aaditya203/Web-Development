@@ -1,6 +1,5 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -12,5 +11,48 @@ model User {
   email     String   @unique
   name      String?
   age       Int?
-  createdAt DateTime @default(now())
+  number    String   @unique
+  password  String
+  OnRampTransaction OnRampTransaction[]
+  Balance Balance[]
+}
+
+model Merchant{
+  id String @id @default(cuid())
+  email String @unique
+  name String
+  password String
+  auth_type AuthType
+}
+
+enum AuthType{
+  Google
+  Github
+}
+
+model OnRampTransaction{
+  id String @id @default(cuid())
+  status OnRampStatus
+  token String @unique
+  provider String
+  amount Int
+  startTime DateTime
+  userId Int
+  user User @relation(fields: [id],references: [id])
+
+}
+
+
+model Balance{
+  id String @id @default(cuid())
+  userId String @unique
+  amount Int
+  locked Int
+  user User @relation(fields: [id],references: [id])
+}
+
+enum OnRampStatus{
+  Success
+  Failure
+  Processing
 }
