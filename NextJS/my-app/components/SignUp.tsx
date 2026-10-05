@@ -1,10 +1,11 @@
 "use client"
 
+import { signup } from "@/app/actions/user";
 import axios from "axios";
 import { useState } from "react";
 
 export default function Signup() {
-    const [fullName,setFullName]=useState("");
+    const [name,setName]=useState("");
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("")
   return (
@@ -64,7 +65,7 @@ export default function Signup() {
 
                 <input
                 onChange={(e)=>{
-                    setFullName(e.target.value);
+                    setName(e.target.value);
                 }}
                   type="text"
                   placeholder="John Doe"
@@ -115,11 +116,8 @@ export default function Signup() {
               </div>
 
               <button onClick={()=>{
-                axios.post("http://localhost:3000/api/user",{
-                    username:fullName,
-                    email:email,
-                    password:password
-                })
+                signup(email,name,password);
+                
               }} className="w-full rounded-xl bg-blue-600 py-3 font-semibold text-white transition hover:bg-blue-700">
                 Create Account
               </button>
