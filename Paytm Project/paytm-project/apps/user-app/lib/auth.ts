@@ -52,6 +52,13 @@ export const authOptions:NextAuthOptions = {
                             number:credentials.phone
                         }
                     })
+                    await prisma.balance.create({
+                        data:{
+                            userId:newUser.id,
+                            amount:0,
+                            locked:0
+                        }
+                    })
                     return {
                     id:newUser.id.toString(),
                     email:newUser.email,
