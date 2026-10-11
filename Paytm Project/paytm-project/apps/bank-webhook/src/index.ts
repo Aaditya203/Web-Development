@@ -2,6 +2,7 @@ import express from "express";
 import {prisma} from "@repo/db";
 const app = express();
 
+app.use(express.json())
 type PaymentInformation = {
     token:string;
     userId:string;
@@ -17,14 +18,19 @@ app.post("/webhook/hdfc",async(req,res)=>{
 
     try{
         await prisma.$transaction([
-            prisma.balance.update({
+            prisma.balance.upsert({
                 where:{
                     userId:paymentInformation.userId
                 },
-                data:{
+                update:{
                     amount:{
                         increment:Number(paymentInformation.amount),
                     }
+                },
+                create:{
+                    userId:paymentInformation.userId,
+                    amount:paymentInformation.amount,
+                    locked:0
                 }
             }),
             prisma.onRampTransaction.updateMany({
